@@ -1,5 +1,6 @@
 {
-  "name": "forkify",
+  "homepage": "https://soltonanna.github.io/recipes",
+  "name": "recipes",
   "version": "1.0.0",
   "description": "Recipes application",
   "scripts": {
@@ -7,7 +8,7 @@
     "build": "parcel build index.html",
     "deploy": "gh-pages -d dist"
   },
-  "author": "",
+  "author": "Sultanova Anahit",
   "license": "ISC",
   "dependencies": {
     "core-js": "^3.26.1",

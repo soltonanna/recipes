@@ -2,6 +2,7 @@
   "homepage": "https://soltonanna.github.io/recipes",
   "name": "recipes",
   "version": "1.0.0",
+  "private": true,
   "description": "Recipes application",
   "scripts": {
     "start": "parcel index.html",

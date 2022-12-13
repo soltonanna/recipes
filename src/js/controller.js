@@ -1,18 +1,10 @@
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
 
-/** 
- * ? JavaScript library which provides tools for creating object-oriented and event-driven JavaScript code 
-**/ 
+/** JavaScript library which provides tools for creating object-oriented and event-driven JavaScript code **/ 
 import 'core-js/stable';
-/** 
- * ? The runtime support for compiled/transpiled async functions.
-**/ 
+/** The runtime support for compiled/transpiled async functions. **/ 
 import 'regenerator-runtime/runtime'; 
-
-const recipeContainer = document.querySelector('.recipe');
-
-
 
 // The current API for course
 // https://forkify-api.herokuapp.com/v2
@@ -20,6 +12,9 @@ const recipeContainer = document.querySelector('.recipe');
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
+const recipeContainer = document.querySelector('.recipe');
+
+/** Load and render recipes */
 const controlRecipes = async function() {
   try {
     recipeView.renderSpinner();
@@ -34,10 +29,12 @@ const controlRecipes = async function() {
     recipeView.render(model.state.recipe);
   } 
   catch (error) {
-    alert(error)
+    console.log(error)
   }
 }
 
-//["hashchange", "load"].forEach(ev => addEventListener(ev, controlRecipes));
-window.addEventListener('load', controlRecipes);
-window.addEventListener('hashchange', controlRecipes);
+/** Show recipes after load or change the hash of URL */
+const init = function(){
+  recipeView.addHandlerRender(controlRecipes);
+}
+init();

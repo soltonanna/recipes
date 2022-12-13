@@ -2,7 +2,7 @@
  * ? Here we put the functions which should be reused across the project 
 **/
 import { async } from "regenerator-runtime";
-import { TIMEOUT_SEC } from "../config";
+import { TIMEOUT_SEC } from "../config.js";
 
 
 export const timeout = function (s) {

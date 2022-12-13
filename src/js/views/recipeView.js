@@ -1,6 +1,8 @@
 import icons from 'url:../../img/icons.svg';
 import { Fraction } from 'fractional';
 
+/* Note: Private methods called with # sign */
+
 class RecipeView {
     #parentElement = document.querySelector('.recipe');
     #data;
@@ -17,7 +19,7 @@ class RecipeView {
         this.#parentElement.innerHTML = '';
     }
 
-    renderSpinner = (parentEl) => {
+    renderSpinner(parentEl){
         const markup = `
           <div class="spinner">
             <svg>
@@ -27,6 +29,10 @@ class RecipeView {
     
         this.#parentElement.innerHTML = '';
         this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
+
+    addHandlerRender(handler){
+        ["hashchange", "load"].forEach(ev => addEventListener(ev, handler));
     }
 
     #generateMarkup() {

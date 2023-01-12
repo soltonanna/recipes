@@ -27,11 +27,14 @@ if (module.hot) {
 /** Load and render recipes */
 const controlRecipes = async function() {
   try {
+    const id = window.location.hash.slice(1);
+
+    if (!id) return;
     recipeView.renderSpinner();
 
-    const id = window.location.hash.slice(1);
-    if (!id) return;
-    
+    // 0. Update results view to mark selected search result
+    resultsView.update(model.getSearchResultsPage());
+
     // 1. Loading recipe from model
     await model.loadRecipe(id);
 
@@ -80,9 +83,8 @@ const controlServings = function(newServings) {
   model.updateServings(newServings);
 
   // 2. Update the recipe view
-  //recipeView.render(model.state.recipe);
   recipeView.update(model.state.recipe);
-  // update method only update texts and attributes in the DOM, not re-render entire view.
+  // *update method only update texts and attributes in the DOM, not re-render entire view.
 } 
 
 

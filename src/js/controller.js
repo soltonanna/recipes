@@ -80,7 +80,9 @@ const controlServings = function(newServings) {
   model.updateServings(newServings);
 
   // 2. Update the recipe view
-  recipeView.render(model.state.recipe);
+  //recipeView.render(model.state.recipe);
+  recipeView.update(model.state.recipe);
+  // update method only update texts and attributes in the DOM, not re-render entire view.
 } 
 
 

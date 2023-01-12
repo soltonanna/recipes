@@ -592,7 +592,9 @@ const controlServings = function(newServings) {
     // 1. Update the recipe servings (in state)
     _modelJs.updateServings(newServings);
     // 2. Update the recipe view
-    (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
+    //recipeView.render(model.state.recipe);
+    (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe);
+// update method only update texts and attributes in the DOM, not re-render entire view.
 };
 /** Show recipes after load or change the hash of URL */ const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
@@ -2663,6 +2665,25 @@ class View {
         const markup = this._generateMarkup();
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    update(data) {
+        if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
+        this._data = data;
+        const newMarkup = this._generateMarkup();
+        const newDOM = document.createRange().createContextualFragment(newMarkup);
+        // * this method convert the string into real DOM Node object; 'newDom' like the Virtual DOM
+        const newElements = Array.from(newDOM.querySelectorAll("*"));
+        const currElements = Array.from(this._parentElement.querySelectorAll("*"));
+        // * need to compare the arrays and change in DOM only the changed params
+        newElements.forEach((newEl, i)=>{
+            const curEl = currElements[i];
+            // * update changed Text
+            if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== "") curEl.textContent = newEl.textContent;
+            // * update changed attributes
+            if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== "") Array.from(newEl.attributes).forEach((attr)=>{
+                curEl.setAttribute(attr.name, attr.value);
+            });
+        });
     }
     _clear() {
         this._parentElement.innerHTML = "";

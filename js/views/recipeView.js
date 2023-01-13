@@ -1,5 +1,6 @@
 import View from './View';
-import { Fraction } from 'fractional';
+//import { Fraction } from 'fractional';
+var Fraction = require('fractional').Fraction
 
 /* Note: Private methods called with # sign */
 

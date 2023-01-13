@@ -1,5 +1,4 @@
 import View from "./View.js";
-import icons from 'url:../../img/icons.svg';
 import user from '../../img/user-solid.svg';
 
 class PreviewView extends View {

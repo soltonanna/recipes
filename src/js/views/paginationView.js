@@ -23,6 +23,7 @@ class PaginationView extends View {
             return `
             <button data-goto="${currentPage + 1}" class="btn--inline pagination__btn--next">
                 <span>Page ${currentPage + 1}</span>
+                <i class="fa-solid fa-arrow-right"></i>
             </button>`;
         }
 
@@ -30,6 +31,7 @@ class PaginationView extends View {
         if (currentPage === numPages && numPages > 1) { 
             return `
             <button data-goto="${currentPage - 1}" class="btn--inline pagination__btn--prev">
+                <i class="fa-solid fa-arrow-left-long"></i>
                 <span>Page ${currentPage - 1}</span>
             </button>`;
         }
@@ -38,11 +40,13 @@ class PaginationView extends View {
         if (currentPage <  numPages) {
             return `
             <button data-goto="${currentPage - 1}" class="btn--inline pagination__btn--prev">
+            <i class="fa-solid fa-arrow-left-long"></i>
               <span>Page ${currentPage - 1}</span>
             </button>
 
             <button data-goto="${currentPage + 1}" class="btn--inline pagination__btn--next">
                 <span>Page ${currentPage + 1}</span>
+                <i class="fa-solid fa-arrow-right"></i>
             </button>`;
         }
 

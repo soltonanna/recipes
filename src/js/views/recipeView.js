@@ -1,16 +1,4 @@
 import View from './View';
- 
-import user from '../../img/user-solid.svg';
-import users from '../../img/users-solid.svg';
-import clock from '../../img/clock-solid.svg';
-import minus from '../../img/minus-solid.svg';
-import plus from '../../img/plus-solid.svg';
-import bookmark from '../../img/bookmark-regular.svg';
-import bookmarkFill from '../../img/bookmark-solid.svg';
-import check from '../../img/check-solid.svg';
-
-
-
 import { Fraction } from 'fractional';
 
 /* Note: Private methods called with # sign */
@@ -57,32 +45,35 @@ class RecipeView extends View {
 
         <div class="recipe__details">
             <div class="recipe__info">
-                <img src="${clock}" alt="clock-icon" class="recipe__info-icon" />
+                <i class="fa-solid fa-clock recipe__info-icon"></i>
                 <span class="recipe__info-data recipe__info-data--minutes">${this._data.cookingTime}</span>
                 <span class="recipe__info-text">minutes</span>
             </div>
 
             <div class="recipe__info">
-                <img src="${users}" alt="users-icon" class="recipe__info-icon" />
+                <i class="fa-solid fa-users recipe__info-icon"></i>
                 <span class="recipe__info-data recipe__info-data--people">${this._data.servings}</span>
                 <span class="recipe__info-text">servings</span>
 
                 <div class="recipe__info-buttons">
                     <button class="btn--tiny btn--update-servings" data-update-to="${this._data.servings - 1}">
-                        <img src="${minus}" />
+                        <i class="fa-solid fa-minus"></i>
                     </button>
                     <button class="btn--tiny btn--update-servings" data-update-to="${this._data.servings + 1}">
-                        <img src="${plus}" />
+                        <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
             </div>
 
             <div class="recipe__user-generated ${this._data.key ? '' : 'hidden'}">
-                <img src="${user}" alt="user-icon" />    
+                <i class="fa-solid fa-user"></i>   
             </div>
 
             <button class="btn--round btn--bookmark">
-                <img src="${this._data.bookmarked ? bookmarkFill : bookmark}" class="${this._data.bookmarked ? '' : 'icon-fill'}"  /> 
+                ${this._data.bookmarked 
+                    ? "<i class='fa-solid fa-bookmark icon-fill'></i>" 
+                    : "<i class='fa-regular fa-bookmark'></i>"
+                }
             </button>
         </div>
 
@@ -101,6 +92,7 @@ class RecipeView extends View {
             </p>
             <a class="btn--small recipe__btn" href="${this._data.sourceUrl}" target="_blank" >
                 <span>Directions</span>
+                <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>`;
     }
@@ -108,7 +100,7 @@ class RecipeView extends View {
     _generateMarkupIngredient(ing) {
         return `
         <li class="recipe__ingredient">
-            <img src="${check}" alt="check-icon" class="recipe__icon" />
+            <i class="fa-solid fa-check recipe__icon"></i>
             <div class="recipe__quantity">
                 ${ing.quantity ? new Fraction(ing.quantity).toString() : ''}
             </div>

@@ -1,6 +1,6 @@
 import View from './View.js';
 
-var Fraction = require('fraction.js');
+import { numberToFraction } from '../helper.js';
 
 /* Note: Private methods called with # sign */
 
@@ -103,7 +103,7 @@ class RecipeView extends View {
         <li class="recipe__ingredient">
             <i class="fa-solid fa-check recipe__icon"></i>
             <div class="recipe__quantity">
-                ${ing.quantity ? new Fraction(ing.quantity).toString() : ''}
+                ${ing.quantity ? numberToFraction(ing.quantity).toString() : ''}
             </div>
             <div class="recipe__description">
                 <span class="recipe__unit">${ing.unit}</span>

@@ -82,7 +82,7 @@ class RecipeView extends View {
             </div>
 
             <button class="btn--round btn--bookmark">
-                <img src="${this._data.bookmarked ? bookmark : bookmarkFill}" class="${this._data.bookmarked ? '' : 'icon-fill'}"  /> 
+                <img src="${this._data.bookmarked ? bookmarkFill : bookmark}" class="${this._data.bookmarked ? '' : 'icon-fill'}"  /> 
             </button>
         </div>
 

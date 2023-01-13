@@ -1,5 +1,4 @@
 import View from "./View.js";
-import user from '../../img/user-solid.svg';
 
 class PreviewView extends View {
     _parentElement = '';
@@ -21,7 +20,7 @@ class PreviewView extends View {
             </div>
 
             <div class="preview__user-generated ${this._data.key ? '' : 'hidden'}">
-              <img src="${user}" alt="user-icon" />
+              <i class="fa-solid fa-user"></i>
             </div>
           </a>
         </li>`;

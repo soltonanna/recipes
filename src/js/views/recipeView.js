@@ -1,5 +1,6 @@
 import View from './View';
-import { Fraction } from 'fractional';
+
+var Fraction = require('fraction.js');
 
 /* Note: Private methods called with # sign */
 

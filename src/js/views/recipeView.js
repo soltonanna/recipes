@@ -1,4 +1,4 @@
-import View from './View';
+import View from './View.js';
 
 var Fraction = require('fraction.js');
 

@@ -1,179 +1,236 @@
 .recipe {
+  @include displayFlex(column, nowrap, flex-start, flex-start, flex-start);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   background-color: $color-grey-light-1;
 
-  ///////////
-  // FIGURE
-  &__fig {
-    height: 32rem;
-    position: relative;
-    // transform: scale(1.04) translateY(-1px);
-    transform-origin: top;
-
-    &::before {
-      content: '';
-      display: block;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
-      );
-      opacity: 0.6;
-    }
-  }
-
-  &__img {
+  .row-top {
+    @include displayGrid(1.6fr 1.1fr, auto, stretch, center, center, center);
     width: 100%;
-    display: block;
-    height: 100%;
-    object-fit: cover;
-  }
 
-  &__title {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 20%) skewY(-6deg);
-    color: #fff;
-    font-weight: 700;
-    font-size: 3.25rem;
-    text-transform: uppercase;
-    width: 50%;
-    line-height: 1.95;
-    text-align: center;
-
-    span {
-      -webkit-box-decoration-break: clone;
-      box-decoration-break: clone;
-      padding: 1.3rem 2rem;
-      background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
-      );
+    @include respond(tab-port) {
+      @include displayFlex(column, nowrap, center, center, center);
     }
 
-    @media only screen and (max-width: $bp-medium) {
-      width: 70%;
+    .single-fig {
+      width: 100%; height: 450px;
+      position: relative;
+      transform-origin: top;
+      border-radius: 0rem;
+      overflow: hidden;
+      transition: all 0.8s;
+      
+  
+      @include respond(phone-big) {
+        height: 380px;
+      }
+      @include respond(phone) {
+        height: 300px;
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        width: 100%; height: 100%;
+        position: absolute;
+        left: 0; top: 0;
+      }
+  
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 1.2s;
+      }
+  
+      &:hover {
+        box-shadow: 0 0 30px $color-grey-dark-2;
+  
+        img {
+          transform: rotate(2deg) scale(1.05);
+        }
+      }
     }
-  }
-
-  ///////////
-  // DETAILS
-  &__details {
-    display: flex;
-    align-items: center;
-    padding: 7.5rem 8rem 3.5rem 8rem;
-  }
-
-  &__info {
-    font-size: 1.65rem;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-
-    &:not(:last-child) {
-      margin-right: 4.5rem;
-    }
-  }
-
-  &__info-icon {
-    height: 2.35rem;
-    width: 2.35rem;
-    fill: $color-primary;
-    margin-right: 1.15rem;
-  }
-
-  &__info-data {
-    margin-right: 0.5rem;
-    font-weight: 700;
-  }
-
-  &__info-buttons {
-    display: flex;
-    margin-left: 1.6rem;
-    transform: translateY(-1px);
-  }
-
-  &__user-generated {
-    background-color: darken($color-grey-light-2, 2%);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 4rem;
-    width: 4rem;
-    border-radius: 10rem;
-
-    margin-left: auto;
-    margin-right: 1.75rem;
-
-    img {
-      height: 2.25rem;
-      width: 2.25rem;
-      fill: $color-primary;
+  
+    .single-title {
+      font-family: "Ubuntu", serif;
+      text-transform: uppercase;
+      color: $brand-color;
+      font-weight: 600;
+      font-size: 50px;
+      width: max-content;
+      line-height: 1.95;
+      text-align: center;
+      transform: skewY(-6deg);
+      transition: all 0.8s;
+      padding: 2rem 5rem;
+  
+      @include respond(tab-port) {
+        margin-bottom: 2rem;
+      }
+      @include respond(phone-big) {
+        font-size: 30px;
+      }
+      @include respond(phone) {
+        font-size: 22px;
+      }
+      &:hover {
+        box-shadow: 1px 1px 10px rgba($color-grey-dark-2, 0.2);
+        transform: skewY(0deg);
+      }
     }
   }
 
-  ///////////
-  // INGREDIENTS
-  &__ingredients {
-    padding: 5rem 8rem;
-    font-size: 1.6rem;
-    line-height: 1.4;
-    background-color: $color-grey-light-2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  .row-bottom {
+    width: 100%;
 
-  &__ingredient-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem 3rem;
-    list-style: none;
-  }
+    /***** DETAILS */
+    .single-details {
+      @include displayFlex(row, nowrap, flex-start, flex-start, center);
+      padding: 3rem 0;
 
-  &__ingredient {
-    display: flex;
-  }
+      @include respond(phone) {
+        @include displayFlex(column, nowrap, flex-start, flex-start, flex-start);
+        width: 100%;
+      }
 
-  &__icon {
-    height: 2rem;
-    width: 2rem;
-    fill: $color-primary;
-    margin-right: 1.1rem;
-    flex: 0 0 auto;
-    margin-top: 0.1rem;
-  }
+      &__info {
+        @include displayFlex(row, nowrap, flex-start, flex-start, center);
+        text-transform: uppercase;
+        font-size: 1.65rem;
+    
+        @include respond(phone) {
+          width: 100%;
+        }
 
-  &__quantity {
-    margin-right: 0.5rem;
-    flex: 0 0 auto;
-  }
+        &:not(:last-child) {
+          margin-right: 4.5rem;
 
-  ///////////
-  // DIRECTIONS
-  &__directions {
-    padding: 5rem 10rem;
-    padding-bottom: 5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+          @include respond(phone) {
+            margin-right: 0;
+          }
+        }
 
-  &__directions-text {
-    font-size: 1.7rem;
-    text-align: center;
-    margin-bottom: 3.5rem;
-    color: $color-grey-dark-2;
-  }
+        &-icon {
+          width: 2.35rem;
+          height: 2.35rem;
+          fill: $brand-color;
+          margin-right: 1.15rem;
+          margin-top: 1.05rem;
+        }
+      
+        &-data {
+          margin-right: 0.5rem;
+          font-weight: 700;
+        }
+      
+        &-buttons {
+          display: flex;
+          margin-left: 1.6rem;
+          transform: translateY(-1px);
+        }
+      }
 
-  &__publisher {
-    font-weight: 700;
+      &__user-generated {
+        background-color: darken($color-grey-light-2, 2%);
+    
+        @include displayFlex(row, nowrap, center, center, center);
+        height: 4rem; width: 4rem;
+        border-radius: 10rem;
+        margin-left: auto;
+        margin-right: 1.75rem;
+        transition: all 0.5s;
+
+        &:hover {
+          background-color: $brand-color;
+
+          img, i {
+            color: $white;
+            fill: $white;
+          }
+        }
+
+        img {
+          height: 2.25rem;
+          width: 2.25rem;
+          fill: $brand-color;
+        }
+      }
+    }
+
+    .outer-group {
+      @include displayGrid(1.7fr 1fr, auto, stretch, center, center, start);
+      width: 100%;
+
+      @include respond(tab-port) {
+        @include displayFlex(column, nowrap, center, center, center);
+      }
+
+      /***** INGREDIENTS */
+      .single-ingredients {
+        @include displayFlex(column, nowrap, center, center, center);
+        background-color: $color-grey-light-2;
+        padding: 5rem 8rem;
+        font-size: 1.6rem;
+        line-height: 1.4;
+
+        @include respond(phone-big) {
+          padding: 3rem 0;
+          width: 100%;
+        }
+
+        &-list {
+          @include displayGrid(1fr 1fr, auto, stretch, center, center, start);
+          gap: 2.5rem 3rem;
+          list-style: none;
+
+          @include respond(phone-big) {
+            @include displayGrid(1fr, auto, stretch, center, center, start);
+            gap: 1rem;
+          }
+
+          .ingredient {
+            display: flex;
+
+            &__icon {
+              width: 2rem; height: 2rem;
+              margin-right: 1.1rem;
+              margin-top: 0.1rem;
+              fill: $brand-color;
+              flex: 0 0 auto;
+            }
+          
+            &__quantity {
+              margin-right: 0.5rem;
+              flex: 0 0 auto;
+            }
+          }
+        }
+      }
+
+      /***** DIRECTIONS */
+      .single-directions {
+        @include displayFlex(column, nowrap, center, center, center);
+        padding: 5rem 10rem;
+        padding-bottom: 5rem;
+
+        &__text {
+          font-size: 1.7rem;
+          text-align: center;
+          margin-bottom: 3.5rem;
+          color: $color-grey-dark-2;
+
+          .publisher {
+            font-weight: 700;
+          }
+        }
+        &__btn {
+          a, span, i {
+            color: $brand-color;
+          }
+        }
+      }
+    }
   }
 }

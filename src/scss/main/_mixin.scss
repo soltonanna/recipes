@@ -1,0 +1,95 @@
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 31.25em) { @content };   // 425px
+    }
+    @if $breakpoint == phone-big {
+        @media only screen and (max-width: 40em) { @content };   // 425px
+    }
+    @if $breakpoint == tab-port {
+        @media only screen and (max-width: 65em) { @content };   // 1024px
+    }
+    @if $breakpoint == tab-land {
+        @media only screen and (max-width: 90em) { @content };   // 1440
+    }
+    @if $breakpoint == big-desktop {
+        @media only screen and (min-width: 112.5em) { @content }; // >1800
+    }
+}
+
+@mixin absCenter {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin displayFlex($flDirection, $flWrap, $flAContent, $flJContent, $flAAtimes ) {
+    display: flex;
+    flex-direction: $flDirection;
+    flex-wrap: $flWrap;
+    align-content: $flAContent;
+    justify-content: $flJContent;
+    align-items: $flAAtimes;
+}
+
+@mixin displayGrid($templateCol, $templateRow, $flAAtimes, $flJContent, $flAContent, $flJItems) {
+    display: grid; 
+    grid-template-columns: $templateCol; 
+    grid-template-rows: $templateRow; 
+
+    align-content: $flAAtimes;
+    justify-content: $flJContent;
+    align-items: $flAContent;
+    justify-items: $flJItems;
+}
+
+@mixin fonts($color, $size, $weight, $line-height, $decor) {
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line-height;
+    text-decoration: $decor;
+}
+
+/* Hover Effect_1 (add under-border and change color of text */
+@mixin liner-gradient {
+    background-image: linear-gradient(
+        to right,
+        $main-color 20%,
+        $main-color 50%,
+        #fff 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+    
+    &:before {
+        content: '';
+        background: $main-color;
+        display: block;
+        position: absolute;
+        bottom: -3px; left: 0;
+        width: 0; height: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+        
+    &:hover {
+        background-position: 0;
+
+        &::before {
+            width:100%;
+        }    
+    }
+}

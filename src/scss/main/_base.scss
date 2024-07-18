@@ -1,0 +1,76 @@
+$main-color: #556970;
+$brand-color: #ABA944;
+$white: #ffffff;
+$black: #222222;
+
+$color-grad-1: #08b280;
+$color-grad-2: #105c53;
+
+$color-grey-light-1: #f9f5f3; // Light background
+$color-grey-light-2: #f2efee; // Light lines
+$color-grey-light-3: #d3c7c3; // Light text (placeholder)
+$color-grey-dark-1: #615551; // Normal text
+$color-grey-dark-2: #918581; // Lighter text
+
+$gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
+
+$bp-large: 78.15em; // 1250px
+$bp-medium: 61.25em; // 980px
+$bp-small: 37.5em; // 600px
+$bp-smallest: 31.25em; // 500px
+
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@400;700&family=Chicle&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/*
+font-family: "Cherry Swash", serif;
+font-family: "Chicle", serif;
+font-family: "Ubuntu", serif;
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  @media only screen and (max-width: $bp-medium) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: "Ubuntu", serif;
+  font-weight: 400;
+  line-height: 1.6;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 2 * 4vw);
+}
+
+.container {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0 8rem;
+
+  @include respond(tab-port) {
+    padding: 0 5rem;
+  }
+  @include respond(phone-big) {
+    padding: 0 3rem;
+  }
+  @include respond(phone) {
+    padding: 0 1.5rem;
+  }
+}
+
+a {
+  text-decoration: none;
+}

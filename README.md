@@ -1,4 +1,4 @@
-<img src="src/img/Recipes.png" alt="Recipes" />
+<img src="src/img/Recipes.jpg" alt="Recipes" />
 
 # Recipe app
 Recipe application with custom recipe uploaded. Here you can search some interesting recipes, bookmark them or add your own ones.

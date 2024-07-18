@@ -5,6 +5,7 @@
   "default": "src/index.html",
   "scripts": {
     "compile:sass": "node-sass src/scss/main.scss src/style.css",
+    "watch:sass": "node-sass -w src/scss/main.scss src/style.css",
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --dist-dir ./dist",
     "deploy": "gh-pages -d src"

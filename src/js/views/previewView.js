@@ -10,16 +10,16 @@ class PreviewView extends View {
         <li class="preview">
           <a class="preview__link ${this._data.id === id ? 'preview__link--active' : ''}" 
             href="#${this._data.id}">
-            <figure class="preview__fig">
+            <figure class="fig">
                 <img src="${this._data.image}" alt="${this._data.title}" />
             </figure>
 
-            <div class="preview__data">
-                <h4 class="preview__title">${this._data.title}</h4>
-                <p class="preview__publisher">${this._data.publisher}</p>  
+            <div class="data">
+                <h4 class="data__title">${this._data.title}</h4>
+                <p class="data__publisher">${this._data.publisher}</p>  
             </div>
 
-            <div class="preview__user-generated ${this._data.key ? '' : 'hidden'}">
+            <div class="user-generated ${this._data.key ? '' : 'hidden'}">
               <i class="fa-solid fa-user"></i>
             </div>
           </a>

@@ -1,76 +1,104 @@
 .header {
-  grid-area: head;
-  background-color: $color-grey-light-1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include displayFlex(column, nowrap, center, flex-start, center);
 
-  &__logo {
-    margin-left: 4rem;
-    display: block;
-    font-size: 4.2rem;
-    font-family: 'Satisfy', cursive;
-    font-weight: 900;
-    color: $color-grad-2;
+  position: relative;
+  min-height: 85vh;
+  height: 85vh;
+
+  background: url('img/recipes_bg.jpg') no-repeat center center;
+  background-size: cover;
+
+  @include respond(tab-land) {
+    //border: 2px solid red;
   }
+  @include respond(tab-port) {
+    //border: 2px solid green;
+    min-height: 70vh;
+    height: 70vh;
+  }
+  @include respond(phone-big) {
+    //border: 2px solid blue;
+    min-height: 50vh;
+    height: 50vh;
+  }
+  @include respond(phone) {
+    //border: 2px solid orange;
+  }
+
+  &__overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba($black, 0.4);
+
+    @include respond(phone-big) {
+      background-color: rgba($black, 0.5);
+    }
+  }
+
+  .row-top {
+    @include displayFlex(row, nowrap, center, space-between, center);
+    width: 100%;
+    margin: 5rem 0;
+  }
+
+  .row-bottom {
+    @include displayFlex(column, nowrap, flex-start, flex-start, flex-start);
+    margin-top: 15rem;  
+    width: 60%;
+    gap: 5rem;
+  
+    @include respond(tab-port) {
+      width: 100%;
+    }
+    @include respond(phone-big) {
+      margin-top: 4rem; 
+    }
+  } 
 }
 
-.search {
-  background-color: #fff;
-  border-radius: 10rem;
-  display: flex;
-  align-items: center;
-  padding-left: 3rem;
-  transition: all 0.3s;
 
-  &:focus-within {
-    transform: translateY(-2px);
-    box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);
-  }
+.logo {
+  display: block;
+  position: relative;
+  z-index: 5;
 
-  &__field {
-    border: none;
-    background: none;
-    font-family: inherit;
-    color: inherit;
-    font-size: 1.7rem;
-    width: 30rem;
+  img {
+    max-width: 300px;
+    object-fit: contain;
 
-    &:focus {
-      outline: none;
+    @include respond(tab-port) {
+      max-width: 200px;
     }
-
-    &::placeholder {
-      color: $color-grey-light-3;
+    @include respond(phone-big) {
+      max-width: 150px;
     }
-
-    @media only screen and (max-width: $bp-medium) {
-      width: auto;
-
-      &::placeholder {
-        color: white;
-      }
+    @include respond(phone) {
+      max-width: 150px;
     }
-  }
-
-  &__btn {
-    font-weight: 600;
-    font-family: inherit;
   }
 }
 
 .nav {
   align-self: stretch;
-  margin-right: 2.5rem;
 
   &__list {
+    @include displayFlex(row, nowrap, center, center, center);
     list-style: none;
-    display: flex;
     height: 100%;
+    gap: 2rem;
+
+    @include respond(phone-big) {
+      @include displayFlex(column, nowrap, center, center, center);
+      gap: 1rem;
+    }
   }
 
   &__item {
     position: relative;
+    color: $white;
   }
 
   &__btn {
@@ -85,14 +113,12 @@
     cursor: pointer;
     padding: 0 1.5rem;
     transition: all 0.3s;
-
-    display: flex;
-    align-items: center;
+    @include displayFlex(row, nowrap, center, center, center);
 
     svg {
       height: 2.4rem;
       width: 2.4rem;
-      fill: $color-primary;
+      fill: $brand-color;
       margin-right: 0.7rem;
       transform: translateY(-1px);
     }
@@ -100,48 +126,172 @@
     &:focus {
       outline: none;
     }
-
-    &:hover {
-      background-color: $color-grey-light-2;
-    }
   }
 }
 
 .bookmarks {
-  padding: 1rem 0;
   position: absolute;
-  // right: 0;
   right: -2.5rem;
+  top: 3rem;
   z-index: 10;
   width: 40rem;
-  background-color: #fff;
-  box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
-
-  visibility: hidden;
   opacity: 0;
+  border-radius: 10px;
+  visibility: hidden;
+  background-color: $white;
   transition: all 0.5s 0.2s;
+  box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
 
   &__list {
     list-style: none;
+
+    .preview {
+      border-radius: 0;
+
+      &__link {
+        &:link,
+        &:visited {
+          @include displayFlex(row, nowrap, center, space-between, center);
+          gap: 2rem;
+          padding: 1rem;
+        }
+        &:hover {
+          background-color: $color-grey-light-1;
+        }
+      
+        .fig {
+          width: 150px;
+          min-height: 80px;
+          max-height: 80px;
+          border-radius: 10px;
+
+          img {
+            object-fit: cover;
+          }
+        }
+
+        .data {
+          &__title {
+
+          }
+          &__publisher {
+
+          }
+        }
+        .user-generated {
+
+        }
+      }
+    }
+    .error * {
+      color: $brand-color;
+    }
   }
 
   &__field {
+    @include displayFlex(column, nowrap, center, center, center);
     cursor: pointer;
     padding: 0 4rem;
-
-    display: flex;
-    align-items: center;
     height: 100%;
     transition: all 0.3s;
-
-    &:hover {
-      background-color: $color-grey-light-2;
-    }
   }
 
   &:hover,
   .nav__btn--bookmarks:hover + & {
     visibility: visible;
     opacity: 1;
+  }
+}
+
+.banner-title {
+  position: relative;
+  z-index: 5;
+
+  h1 {
+    font-family: "Cherry Swash", serif;
+    margin-bottom: 1.5rem;
+    font-style: normal;
+    line-height: 40px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 40px;
+    color: $white;
+
+    @include respond(tab-port) {
+      font-size: 35px;
+      margin-bottom: 1rem;
+    }
+    @include respond(phone-big) {
+      font-size: 28px;
+      line-height: 28px;
+    }
+    @include respond(phone) {
+      font-size: 23px;
+      line-height: 25px;
+    }
+  }
+  span {
+    font-size: 20px;
+    color: $white;
+    line-height: 20px;
+    text-align: left;
+    font-family: "Ubuntu", serif;
+    font-weight: 400;
+    font-style: normal;
+
+    @include respond(tab-port) {
+      font-size: 18px;
+    }
+    @include respond(phone-big) {
+      font-size: 16px;   
+      line-height: 16px;
+    }
+  }
+}
+
+.search {
+  @include displayFlex(row, nowrap, center, center, center);
+  background-color: $white;
+  border-radius: 10rem;
+  padding-left: 3rem;
+  transition: all 0.3s;
+  position: relative;
+  z-index: 5;
+
+  &:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);
+  }
+
+  &__field {
+    border: none;
+    background: none;
+    font-family: "Ubuntu", serif;
+    color: $brand-color;
+    font-size: 1.7rem;
+    width: 30rem;
+    font-weight: 500;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: rgba($black, 0.4);
+    }
+
+    @include respond(phone) {
+      width: 130px;
+
+      &::placeholder {
+        font-size: 11px;
+      }
+    }
+  }
+
+  &__btn {
+    font-weight: 600;
+    font-family: inherit;
+    background-color: $brand-color;
   }
 }

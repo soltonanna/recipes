@@ -1,174 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="module" src="js/controller.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="module" src="js/controller.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="/src/img/flavor-finder-favicon-black.svg">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
 
-    <script src="https://kit.fontawesome.com/1edb558b8a.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/1edb558b8a.js" crossorigin="anonymous"></script>
 
-    <title>Recipes</title>
-</head>
+        <title>Flavor Finder: Explore Delicious Recipes</title>
+    </head>
 
-<body>
-    <div class="container">
-        <header class="header">
-            <span class="header__logo">Recipes</span>
-            <form class="search">
-            <input
-                type="text"
-                class="search__field"
-                placeholder="Search over 1,000,000 recipes..."
-            />
-            <button class="btn search__btn">
-                <svg class="search__icon">
-                    <use href="img/icons.svg#icon-search"></use>
-                </svg>
-                <span>Search</span>
-            </button>
-            </form>
-
-            <nav class="nav">
-            <ul class="nav__list">
-                <li class="nav__item">
-                <button class="nav__btn nav__btn--add-recipe">
-                    <svg class="nav__icon">
-                    <use href="img/icons.svg#icon-edit"></use>
-                    </svg>
-                    <span>Add recipe</span>
-                </button>
-                </li>
-                <li class="nav__item">
-                <button class="nav__btn nav__btn--bookmarks">
-                    <svg class="nav__icon">
-                    <use href="img/icons.svg#icon-bookmark"></use>
-                    </svg>
-                    <span>Bookmarks</span>
-                </button>
+    <body>
+        <div class="main">
+            <header class="header container ">
+                <div class="header__overlay"></div>
                 
-                <div class="bookmarks">
-                    <ul class="bookmarks__list">
-                    <div class="message">
-                        <div>
-                        <svg>
-                            <use href="img/icons.svg#icon-smile"></use>
-                        </svg>
-                        </div>
-                        <p>
-                        No bookmarks yet. Find a nice recipe and bookmark it :)
-                        </p>
-                    </div>
-                    </ul>
+                <div class="row-top">
+                    <span class="logo">
+                        <a href="/">
+                            <img src="./img/flavor-finder-logo-white.png" alt="Flavor Finder Logo" />
+                        </a>
+                    </span>
+
+                    <nav class="nav">
+                        <ul class="nav__list">
+                            <li class="nav__item">
+                            <button class="nav__btn nav__btn--add-recipe">
+                                <svg class="nav__icon">
+                                <use href="img/icons.svg#icon-edit"></use>
+                                </svg>
+                                <span>Add recipe</span>
+                            </button>
+                            </li>
+                            <li class="nav__item">
+                            <button class="nav__btn nav__btn--bookmarks">
+                                <svg class="nav__icon">
+                                <use href="img/icons.svg#icon-bookmark"></use>
+                                </svg>
+                                <span>Bookmarks</span>
+                            </button>
+                            
+                            <div class="bookmarks">
+                                <ul class="bookmarks__list">
+                                <div class="message">
+                                    <div>
+                                    <svg>
+                                        <use href="img/icons.svg#icon-smile"></use>
+                                    </svg>
+                                    </div>
+                                    <p>
+                                    No bookmarks yet. Find a nice recipe and bookmark it :)
+                                    </p>
+                                </div>
+                                </ul>
+                            </div>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                </li>
-            </ul>
-            </nav>
-        </header>
 
-        <div class="search-results">
-            <ul class="results">
-            </ul>
+                <div class="row-bottom">
+                    <div class="banner-title">
+                        <h1>It is even better than <br/>
+                            an expensive cookery book</h1>
+                        <span>Learn how to make your favorite restaurant's dishes</span>
+                    </div>
+                    
+                    <form class="search">
+                        <input
+                            type="text"
+                            class="search__field"
+                            placeholder="Search over 1,000,000 recipes..."
+                        />
+                        <button class="btn search__btn">
+                            <svg class="search__icon">
+                                <use href="img/icons.svg#icon-search"></use>
+                            </svg>
+                            <span>Search</span>
+                        </button>
+                    </form>
+                </div>
+            </header>
 
-            <div class="pagination">
+            <div class="search-results container">
+                <ul class="results">
+                </ul>
+
+                <div class="pagination">
+                </div>
             </div>
 
-            <p class="copyright">
-            &copy; Copyright by Jonas Schmedtmann. <br/>
-            Modified and rebuild by <a href="https://soltonanna.github.io/" target="_blank">Sultanova Anahit</a>.
-            </p>
+            <div class="recipe container">
+                <div class="message">
+                </div>
+            </div>
         </div>
 
-        <div class="recipe">
-            <div class="message">
-            <div>
-                <svg>
-                <use href="img/icons.svg#icon-smile"></use>
-                </svg>
-            </div>
-            <p>Start by searching for a recipe or an ingredient. Have fun!</p>
-            </div>
+        <div class="copyright container">
+            &copy; Copyright by <a href="https://soltonanna.github.io/" target="_blank">Sultanova Anahit</a>.
         </div>
-    </div>
 
-    <div class="overlay hidden"></div>
-    
-    <div class="add-recipe-window hidden">
-        <button class="btn--close-modal">&times;</button>
-        <form class="upload">
-            <div class="upload__column">
-            <h3 class="upload__heading">Recipe data</h3>
-            <label>Title</label>
-            <input value="TEST23" required name="title" type="text" />
-            <label>URL</label>
-            <input value="TEST23" required name="sourceUrl" type="text" />
-            <label>Image URL</label>
-            <input value="TEST23" required name="image" type="text" />
-            <label>Publisher</label>
-            <input value="TEST23" required name="publisher" type="text" />
-            <label>Prep time</label>
-            <input value="23" required name="cookingTime" type="number" />
-            <label>Servings</label>
-            <input value="23" required name="servings" type="number" />
-            </div>
+        <div class="overlay hidden"></div>
+        
+        <div class="add-recipe-window hidden">
+            <button class="btn--close-modal">&times;</button>
+            <form class="upload">
+                <div class="upload__column">
+                    <h3 class="upload__heading">Recipe data</h3>
+                    
+                    <label for="recipe-title">Title</label> 
+                    <input 
+                        value="" 
+                        placeholder="Title" 
+                        required 
+                        name="title" 
+                        type="text" 
+                        id="recipe-title" />
+                       
+                    
+                    <label for="recipe-url">URL</label>
+                    <input 
+                        value="" 
+                        placeholder="URL" 
+                        required 
+                        name="sourceUrl" 
+                        type="text" 
+                        id="recipe-url" />
+                    
+                    <label for="recipe-imgurl">Image URL</label>
+                    <input 
+                        value="" 
+                        placeholder="Image URL"
+                        required 
+                        name="image" 
+                        type="text" 
+                        id="recipe-imgurl" />
+                    
+                    <label for="recipe-publisher">Publisher</label>
+                    <input 
+                        value="" 
+                        placeholder="Publisher" 
+                        required 
+                        name="publisher" 
+                        type="text" 
+                        id="recipe-publisher" />
+                    
+                    <label for="recipe-cooking" >Cooking time</label>
+                    <input 
+                        value="" 
+                        placeholder="Cooking Time" 
+                        required name="cookingTime" 
+                        type="number" 
+                        id="recipe-cooking" />
+                    
+                    <label for="recipe-servings">Servings</label>
+                    <input 
+                    value="" 
+                    placeholder="Servings" 
+                    required 
+                    name="servings" 
+                    type="number" 
+                    id="recipe-servings" />
+                </div>
 
-            <div class="upload__column">
-            <h3 class="upload__heading">Ingredients</h3>
-            <label>Ingredient 1</label>
-            <input
-                value="0.5,kg,Rice"
-                type="text"
-                required
-                name="ingredient-1"
-                placeholder="Format: 'Quantity,Unit,Description'"
-            />
-            <label>Ingredient 2</label>
-            <input
-                value="1,,Avocado"
-                type="text"
-                name="ingredient-2"
-                placeholder="Format: 'Quantity,Unit,Description'"
-            />
-            <label>Ingredient 3</label>
-            <input
-                value=",,salt"
-                type="text"
-                name="ingredient-3"
-                placeholder="Format: 'Quantity,Unit,Description'"
-            />
-            <label>Ingredient 4</label>
-            <input
-                type="text"
-                name="ingredient-4"
-                placeholder="Format: 'Quantity,Unit,Description'"
-            />
-            <label>Ingredient 5</label>
-            <input
-                type="text"
-                name="ingredient-5"
-                placeholder="Format: 'Quantity,Unit,Description'"
-            />
-            <label>Ingredient 6</label>
-            <input
-                type="text"
-                name="ingredient-6"
-                placeholder="Format: 'Quantity,Unit,Description'"
-            />
-            </div>
+                <div class="upload__column">
+                    <h3 class="upload__heading">Ingredients</h3>
+                    
+                    <label for="recipe-ing1">Ingredient 1</label>
+                    <input
+                        value="0.5,kg,Rice"
+                        type="text"
+                        required
+                        name="ingredient-1"
+                        placeholder="Format: 'Quantity,Unit,Description'"
+                        id="recipe-ing1" />
 
-            <button class="btn upload__btn">
-            <svg>
-                <use href="img/icons.svg#icon-upload-cloud"></use>
-            </svg>
-            <span>Upload</span>
-            </button>
-        </form>
-    </div>
-</body>
+                    <label for="recipe-ing2">Ingredient 2</label>
+                    <input
+                        value="1,,Avocado"
+                        type="text"
+                        name="ingredient-2"
+                        placeholder="Format: 'Quantity,Unit,Description'"
+                        id="recipe-ing2" />
+
+                    <label for="recipe-ing3">Ingredient 3</label>
+                    <input
+                        value=",,salt"
+                        type="text"
+                        name="ingredient-3"
+                        placeholder="Format: 'Quantity,Unit,Description'"
+                        id="recipe-ing3"/>
+
+                    <label for="recipe-ing4">Ingredient 4</label>
+                    <input
+                        type="text"
+                        name="ingredient-4"
+                        placeholder="Format: 'Quantity,Unit,Description'"
+                        id="recipe-ing4"/>
+
+                    <label for="recipe-ing5">Ingredient 5</label>
+                    <input
+                        type="text"
+                        name="ingredient-5"
+                        placeholder="Format: 'Quantity,Unit,Description'"
+                        id="recipe-ing5"/>
+
+                    <label for="recipe-ing6">Ingredient 6</label>
+                    <input
+                        type="text"
+                        name="ingredient-6"
+                        placeholder="Format: 'Quantity,Unit,Description'"
+                        id="recipe-ing6"/>
+                </div>
+
+                <button class="btn upload__btn">
+                    <svg><use href="img/icons.svg#icon-upload-cloud"></use></svg>
+                    <span>Upload</span>
+                </button>
+            </form>
+        </div>
+    </body>
 </html>
